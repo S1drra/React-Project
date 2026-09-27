@@ -31,6 +31,38 @@ const products = [
     description: "Responsive impact cushioning for quick cuts.",
     image: "/products/court-flex.jpg",
   },
+  {
+    id: 5,
+    name: "Stride Runner",
+    price: 89.99,
+    category: "Running",
+    description: "Lightweight cushioning built for daily miles.",
+    image: "/products/stride-runner.jpg",
+  },
+  {
+    id: 6,
+    name: "Urban Classic",
+    price: 74.99,
+    category: "Casual",
+    description: "A clean, everyday sneaker that goes with anything.",
+    image: "/products/urban-classic.jpg",
+  },
+  {
+    id: 7,
+    name: "Trailhead Boot",
+    price: 109.99,
+    category: "Outdoor",
+    description: "Rugged grip and ankle support for rough terrain.",
+    image: "/products/trailhead-boot.jpg",
+  },
+  {
+    id: 8,
+    name: "Court Flex",
+    price: 94.99,
+    category: "Basketball",
+    description: "Responsive impact cushioning for quick cuts.",
+    image: "/products/court-flex.jpg",
+  },
 ];
 
 export default products;

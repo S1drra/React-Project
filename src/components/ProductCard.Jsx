@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-function ProductCard({ name, price, category, description, image }) {
+function ProductCard({ name, price, category, image, onClick }) {
   const [imgFailed, setImgFailed] = useState(false);
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-sm transition hover:shadow-lg">
-      <div className="aspect-square w-full bg-slate-100 flex items-center justify-center">
+    <div onClick={onClick} className="cursor-pointer">
+      <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-slate-100">
         {image && !imgFailed ? (
           <img
             src={image}
@@ -14,7 +14,7 @@ function ProductCard({ name, price, category, description, image }) {
             className="h-full w-full object-cover"
           />
         ) : (
-          <div className="flex flex-col items-center text-slate-400">
+          <div className="flex h-full w-full flex-col items-center justify-center text-slate-400">
             <svg
               className="h-10 w-10"
               fill="none"
@@ -33,13 +33,9 @@ function ProductCard({ name, price, category, description, image }) {
         )}
       </div>
 
-      <div className="p-5">
-        <span className="text-xs font-semibold uppercase tracking-wide text-cyan-600">
-          {category}
-        </span>
-        <h3 className="mt-2 text-lg font-bold text-gray-900">{name}</h3>
-        <p className="mt-1 text-sm text-gray-600">{description}</p>
-        <p className="mt-3 text-xl font-bold text-gray-900">${price.toFixed(2)}</p>
+      <div className="pt-3">
+        <h3 className="text-base font-semibold text-gray-900">{name}</h3>
+        <p className="mt-1 text-lg font-bold text-gray-900">${price.toFixed(2)}</p>
       </div>
     </div>
   );
