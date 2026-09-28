@@ -60,38 +60,49 @@ function Products() {
   }
 
   return (
-    <section id="products" className="bg-white py-16">
+    <section id="products" className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="text-center text-3xl font-bold text-gray-900">Our Shoes</h2>
+        <h2 className="display text-5xl md:text-6xl">Our shoes</h2>
+        <p className="mt-4 max-w-md text-lg text-gray-900/70">
+          Pick a pair for school, work, sports or the weekend. Tap any shoe
+          for details.
+        </p>
 
         {bestSellers.length > 0 && (
-          <div className="mt-10">
-            <h3 className="text-xl font-bold text-gray-900">Best Sellers</h3>
-            <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {bestSellers.map((product) => (
-                <ProductCard
+          <div className="mt-14">
+            <h3 className="display text-2xl md:text-3xl">Best sellers</h3>
+            <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+              {bestSellers.slice(0, 3).map((product, i) => (
+                <div
                   key={product.id}
-                  name={product.name}
-                  price={product.price}
-                  category={product.category}
-                  image={product.image}
-                  bestSeller={product.bestSeller}
-                  onClick={() => setSelectedProduct(product)}
-                />
+                  className={i === 0 ? "col-span-2 md:col-span-1 md:row-span-1" : ""}
+                >
+                  <ProductCard
+                    name={product.name}
+                    price={product.price}
+                    category={product.category}
+                    image={product.image}
+                    bestSeller={product.bestSeller}
+                    featured={i === 0}
+                    onClick={() => setSelectedProduct(product)}
+                  />
+                </div>
               ))}
             </div>
           </div>
         )}
 
-        <div className="mt-12 flex flex-wrap justify-center gap-2">
+        <h3 className="display mt-20 text-2xl md:text-3xl">All shoes</h3>
+        <div className="mt-6 flex flex-wrap gap-2">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => handleCategoryChange(category)}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+              aria-pressed={category === selectedCategory}
+              className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
                 category === selectedCategory
                   ? "bg-gray-900 text-white"
-                  : "bg-slate-100 text-gray-700 hover:bg-slate-200"
+                  : "bg-slate-100 text-gray-900 hover:bg-cyan-500"
               }`}
             >
               {category}
@@ -100,13 +111,13 @@ function Products() {
         </div>
 
         <div className="relative mt-6">
-          <div className="overflow-hidden">
+          <div className="-mx-2 overflow-hidden">
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${index * stepPercent}%)` }}
             >
               {filteredProducts.map((product) => (
-                <div key={product.id} className="w-1/2 flex-shrink-0 px-1.5 sm:px-2 lg:w-1/3">
+                <div key={product.id} className="w-1/2 flex-shrink-0 px-2 lg:w-1/3">
                   <ProductCard
                     name={product.name}
                     price={product.price}
@@ -123,27 +134,27 @@ function Products() {
           <button
             onClick={showPrev}
             aria-label="Previous product"
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 rounded-full bg-gray-900 p-2 text-white shadow-md hover:bg-gray-700"
+            className="absolute left-0 top-[38%] flex h-11 w-11 -translate-x-3 items-center justify-center rounded-full bg-gray-900 text-xl text-white shadow-lg transition hover:bg-cyan-700 md:-translate-x-5"
           >
             ‹
           </button>
           <button
             onClick={showNext}
             aria-label="Next product"
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 rounded-full bg-gray-900 p-2 text-white shadow-md hover:bg-gray-700"
+            className="absolute right-0 top-[38%] flex h-11 w-11 translate-x-3 items-center justify-center rounded-full bg-gray-900 text-xl text-white shadow-lg transition hover:bg-cyan-700 md:translate-x-5"
           >
             ›
           </button>
         </div>
 
-        <div className="mt-6 flex justify-center gap-2">
+        <div className="mt-8 flex justify-center gap-2">
           {Array.from({ length: pageCount }, (_, i) => (
             <button
               key={i}
               onClick={() => setIndex(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`h-2 w-2 rounded-full transition ${
-                i === index ? "bg-cyan-500" : "bg-slate-300"
+              className={`h-2.5 rounded-full transition-all ${
+                i === index ? "w-8 bg-cyan-500" : "w-2.5 bg-gray-900/20"
               }`}
             />
           ))}

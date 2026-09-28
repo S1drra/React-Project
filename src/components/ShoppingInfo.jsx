@@ -16,83 +16,79 @@ const paymentMethods = [
 
 function ShoppingInfo() {
   return (
-    <section id="shopping-info" className="bg-white py-16">
+    <section id="shopping-info" className="bg-slate-200 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="text-center text-3xl font-bold text-gray-900">
-          Sizing, Payment &amp; Delivery
+        <h2 className="display max-w-3xl text-5xl md:text-6xl">
+          Sizing, payment &amp; delivery
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-gray-600">
+        <p className="mt-4 max-w-md text-lg text-gray-900/70">
           Everything you need to know before you check out.
         </p>
 
-        <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-3">
-          {/* Size Chart */}
-          <div>
-            <h3 className="text-lg font-bold text-gray-900">Size Chart</h3>
-            <table className="mt-4 w-full text-left text-sm text-gray-700">
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.8fr_1.1fr]">
+          {/* Size chart */}
+          <div className="rounded-3xl bg-white p-7">
+            <h3 className="display text-2xl">Size chart</h3>
+            <table className="mt-5 w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-slate-200 text-xs uppercase text-gray-500">
-                  <th className="py-2">US</th>
-                  <th className="py-2">EU</th>
-                  <th className="py-2">CM</th>
+                <tr className="text-gray-900/60">
+                  <th className="pb-2 font-semibold">US</th>
+                  <th className="pb-2 font-semibold">EU</th>
+                  <th className="pb-2 font-semibold">CM</th>
                 </tr>
               </thead>
               <tbody>
                 {sizeChart.map((row) => (
-                  <tr key={row.us} className="border-b border-slate-100">
-                    <td className="py-2">{row.us}</td>
-                    <td className="py-2">{row.eu}</td>
-                    <td className="py-2">{row.cm}</td>
+                  <tr key={row.us} className="border-t border-gray-900/10">
+                    <td className="wide py-2.5 text-base font-extrabold text-cyan-700">
+                      {row.us}
+                    </td>
+                    <td className="py-2.5">{row.eu}</td>
+                    <td className="py-2.5">{row.cm}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <p className="mt-3 text-xs text-gray-500">
-              Between sizes? We recommend sizing up. Free size exchanges
-              within 7 days of delivery.
+            <p className="mt-4 text-sm text-gray-900/70">
+              Between sizes? We recommend sizing up. Free size exchanges within
+              7 days of delivery.
             </p>
           </div>
 
-          {/* Payment Methods */}
-          <div>
-            <h3 className="text-lg font-bold text-gray-900">Payment Methods</h3>
-            <ul className="mt-4 space-y-2">
+          {/* Payment methods */}
+          <div className="rounded-3xl bg-gray-900 p-7 text-slate-200">
+            <h3 className="display text-2xl">Payment methods</h3>
+            <ul className="mt-5 flex flex-wrap gap-2">
               {paymentMethods.map((method) => (
                 <li
                   key={method}
-                  className="flex items-center gap-2 text-sm text-gray-700"
+                  className="rounded-full bg-cyan-500 px-4 py-2 text-sm font-semibold text-gray-900"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
                   {method}
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-xs text-gray-500">
+            <p className="mt-5 text-sm text-white/85">
               All transactions are processed securely at checkout.
             </p>
           </div>
 
-          {/* Delivery Info */}
-          <div>
-            <h3 className="text-lg font-bold text-gray-900">Delivery Info</h3>
-            <ul className="mt-4 space-y-3 text-sm text-gray-700">
-              <li>
-                <span className="font-semibold text-gray-900">Processing:</span>{" "}
-                1–2 business days before your order ships.
-              </li>
-              <li>
-                <span className="font-semibold text-gray-900">Delivery area:</span>{" "}
-                Nationwide shipping across the Philippines.
-              </li>
-              <li>
-                <span className="font-semibold text-gray-900">Delivery time:</span>{" "}
-                2–5 business days depending on location.
-              </li>
-              <li>
-                <span className="font-semibold text-gray-900">Delivery fee:</span>{" "}
-                Calculated at checkout based on your address.
-              </li>
-            </ul>
+          {/* Delivery info */}
+          <div className="rounded-3xl bg-white p-7">
+            <h3 className="display text-2xl">Delivery info</h3>
+            <dl className="mt-5 space-y-4 text-sm">
+              {[
+                ["Processing", "1–2 business days before your order ships."],
+                ["Delivery area", "Nationwide shipping across the Philippines."],
+                ["Delivery time", "2–5 business days depending on location."],
+                ["Delivery fee", "Calculated at checkout based on your address."],
+              ].map(([term, detail]) => (
+                <div key={term} className="border-l-4 border-cyan-500 pl-4">
+                  <dt className="font-bold">{term}</dt>
+                  <dd className="mt-0.5 text-gray-900/75">{detail}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </div>

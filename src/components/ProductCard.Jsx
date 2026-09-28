@@ -1,31 +1,49 @@
 import { useState } from "react";
 
-function ProductCard({ name, price, category, image, bestSeller, onClick }) {
+function ProductCard({
+  name,
+  price,
+  category,
+  image,
+  bestSeller,
+  onClick,
+  featured = false,
+}) {
   const [imgFailed, setImgFailed] = useState(false);
 
   return (
-    <div onClick={onClick} className="cursor-pointer">
-      <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-slate-100">
+    <button
+      type="button"
+      onClick={onClick}
+      className="group block w-full text-left"
+      aria-label={`View ${name}`}
+    >
+      <div
+        className={`relative aspect-square w-full overflow-hidden rounded-2xl bg-slate-100 ${
+          featured ? "ring-4 ring-cyan-500" : ""
+        }`}
+      >
         {bestSeller && (
-          <span className="absolute left-2 top-2 z-10 rounded-full bg-cyan-500 px-2 py-1 text-xs font-semibold text-white shadow">
-            Best Seller
+          <span className="absolute left-3 top-3 z-10 rounded-full bg-gray-900 px-3 py-1 text-xs font-bold text-cyan-400">
+            Best seller
           </span>
         )}
         {image && !imgFailed ? (
           <img
             src={image}
-            alt={name}
+            alt=""
             onError={() => setImgFailed(true)}
             className="h-full w-full object-cover"
           />
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center text-slate-400">
+          <div className="flex h-full w-full flex-col items-center justify-center text-gray-900/40">
             <svg
               className="h-10 w-10"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth="1.5"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -38,14 +56,16 @@ function ProductCard({ name, price, category, image, bestSeller, onClick }) {
         )}
       </div>
 
-      <div className="pt-3">
-        <span className="text-xs font-semibold uppercase tracking-wide text-cyan-600">
-          {category}
-        </span>
-        <h3 className="mt-1 text-base font-semibold text-gray-900">{name}</h3>
-        <p className="mt-1 text-lg font-bold text-gray-900">₱{price.toFixed(2)}</p>
+      <div className="flex items-baseline justify-between gap-3 pt-3">
+        <h3 className="wide text-base font-bold leading-snug group-hover:text-cyan-700">
+          {name}
+        </h3>
+        <p className="wide shrink-0 text-base font-extrabold text-cyan-700">
+          ₱{price.toLocaleString("en-PH")}
+        </p>
       </div>
-    </div>
+      <p className="mt-0.5 text-sm text-gray-900/60">{category}</p>
+    </button>
   );
 }
 

@@ -14,49 +14,64 @@ function ContactForm() {
     setSubmitted(true);
   }
 
+  const field =
+    "w-full rounded-xl border border-white/25 bg-white/5 px-4 py-3 text-white placeholder:text-white/50 focus:border-cyan-500 focus:outline-none";
+
   return (
-    <section id="contact" className="bg-gray-900 py-16 text-slate-200">
-      <div className="mx-auto max-w-xl px-6">
-        <h2 className="text-center text-3xl font-bold">Get in Touch</h2>
+    <section id="contact" className="bg-gray-900 py-20 text-white md:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-[1fr_1.1fr]">
+        <div>
+          <h2 className="display text-5xl md:text-6xl">Get in touch</h2>
+          <p className="mt-5 max-w-sm text-lg text-white/75">
+            Questions about sizing, a pair you saw, or your order? Send us a
+            message and we'll get back to you.
+          </p>
+        </div>
 
         {submitted ? (
-          <p className="mt-8 rounded-lg bg-cyan-500 p-4 text-center font-semibold text-gray-900">
+          <p className="pop self-start rounded-2xl bg-cyan-500 p-6 text-lg font-bold text-gray-900">
             Thanks, {formData.name}! We'll get back to you soon.
           </p>
         ) : (
-          <form onSubmit={handleSubmit} className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+          >
             <input
               type="text"
               name="name"
+              aria-label="Your name"
               placeholder="Your name"
               value={formData.name}
               onChange={handleChange}
               required
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-cyan-500 focus:outline-none focus:ring focus:ring-cyan-200"
+              className={field}
             />
             <input
               type="email"
               name="email"
+              aria-label="Your email"
               placeholder="Your email"
               value={formData.email}
               onChange={handleChange}
               required
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-cyan-500 focus:outline-none focus:ring focus:ring-cyan-200"
+              className={field}
             />
             <textarea
               name="message"
+              aria-label="Your message"
               placeholder="Your message"
               value={formData.message}
               onChange={handleChange}
               required
-              rows="4"
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-cyan-500 focus:outline-none focus:ring focus:ring-cyan-200 sm:col-span-2"
+              rows="5"
+              className={`${field} sm:col-span-2`}
             />
             <button
               type="submit"
-              className="rounded-lg bg-cyan-500 py-2 font-semibold text-gray-900 hover:bg-cyan-400 sm:col-span-2"
+              className="rounded-full bg-cyan-500 py-3.5 font-bold text-gray-900 transition hover:bg-white sm:col-span-2"
             >
-              Send Message
+              Send message
             </button>
           </form>
         )}
