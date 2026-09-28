@@ -1,11 +1,16 @@
 import { useState } from "react";
 
-function ProductCard({ name, price, category, image, onClick }) {
+function ProductCard({ name, price, category, image, bestSeller, onClick }) {
   const [imgFailed, setImgFailed] = useState(false);
 
   return (
     <div onClick={onClick} className="cursor-pointer">
       <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-slate-100">
+        {bestSeller && (
+          <span className="absolute left-2 top-2 z-10 rounded-full bg-cyan-500 px-2 py-1 text-xs font-semibold text-white shadow">
+            Best Seller
+          </span>
+        )}
         {image && !imgFailed ? (
           <img
             src={image}
@@ -34,7 +39,10 @@ function ProductCard({ name, price, category, image, onClick }) {
       </div>
 
       <div className="pt-3">
-        <h3 className="text-base font-semibold text-gray-900">{name}</h3>
+        <span className="text-xs font-semibold uppercase tracking-wide text-cyan-600">
+          {category}
+        </span>
+        <h3 className="mt-1 text-base font-semibold text-gray-900">{name}</h3>
         <p className="mt-1 text-lg font-bold text-gray-900">${price.toFixed(2)}</p>
       </div>
     </div>

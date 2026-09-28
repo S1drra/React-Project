@@ -15,8 +15,9 @@ function Navbar() {
         </button>
 
         <ul className={`${isOpen ? "block" : "hidden"} md:flex md:gap-8 w-full md:w-auto`}>
-          <li><a href="#overview" className="block py-2 text-slate-200 hover:text-cyan-500">Overview</a></li>
+          <li><a href="#bus_prof" className="block py-2 text-slate-200 hover:text-cyan-500">Overview</a></li>
           <li><a href="#products" className="block py-2 text-slate-200 hover:text-cyan-500">Shoes</a></li>
+          <li><a href="#shopping-info" className="block py-2 text-slate-200 hover:text-cyan-500">Sizing & Delivery</a></li>
           <li><a href="#mission" className="block py-2 text-slate-200 hover:text-cyan-500">Mission</a></li>
           <li><a href="#contact" className="block py-2 text-slate-200 hover:text-cyan-500">Contact</a></li>
         </ul>

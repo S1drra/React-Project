@@ -16,7 +16,7 @@ function ContactForm() {
 
   return (
     <section id="contact" className="bg-gray-900 py-16 text-slate-200">
-      <div className="mx-auto max-w-lg px-6">
+      <div className="mx-auto max-w-xl px-6">
         <h2 className="text-center text-3xl font-bold">Get in Touch</h2>
 
         {submitted ? (
@@ -24,7 +24,7 @@ function ContactForm() {
             Thanks, {formData.name}! We'll get back to you soon.
           </p>
         ) : (
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4">
+          <form onSubmit={handleSubmit} className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
             <input
               type="text"
               name="name"
@@ -32,7 +32,7 @@ function ContactForm() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="rounded-lg px-4 py-2 text-gray-900"
+              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-cyan-500 focus:outline-none focus:ring focus:ring-cyan-200"
             />
             <input
               type="email"
@@ -41,7 +41,7 @@ function ContactForm() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="rounded-lg px-4 py-2 text-gray-900"
+              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-cyan-500 focus:outline-none focus:ring focus:ring-cyan-200"
             />
             <textarea
               name="message"
@@ -50,11 +50,11 @@ function ContactForm() {
               onChange={handleChange}
               required
               rows="4"
-              className="rounded-lg px-4 py-2 text-gray-900"
+              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-cyan-500 focus:outline-none focus:ring focus:ring-cyan-200 sm:col-span-2"
             />
             <button
               type="submit"
-              className="rounded-lg bg-cyan-500 py-2 font-semibold text-gray-900 hover:bg-cyan-400"
+              className="rounded-lg bg-cyan-500 py-2 font-semibold text-gray-900 hover:bg-cyan-400 sm:col-span-2"
             >
               Send Message
             </button>
