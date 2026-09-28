@@ -32,7 +32,7 @@ function ProductModal({ product, onClose }) {
         <h3 className="mt-1 text-2xl font-bold text-gray-900">{product.name}</h3>
         <p className="mt-2 text-gray-600">{product.description}</p>
         <p className="mt-4 text-2xl font-bold text-gray-900">
-          ${product.price.toFixed(2)}
+          ₱{product.price.toFixed(2)}
         </p>
       </div>
     </div>

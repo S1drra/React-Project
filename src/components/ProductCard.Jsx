@@ -43,7 +43,7 @@ function ProductCard({ name, price, category, image, bestSeller, onClick }) {
           {category}
         </span>
         <h3 className="mt-1 text-base font-semibold text-gray-900">{name}</h3>
-        <p className="mt-1 text-lg font-bold text-gray-900">${price.toFixed(2)}</p>
+        <p className="mt-1 text-lg font-bold text-gray-900">₱{price.toFixed(2)}</p>
       </div>
     </div>
   );
